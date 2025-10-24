@@ -4,7 +4,7 @@ pipeline {
         stage("Build Docker image") {
             steps {
                 echo "Build Docker image"
-                bat "docker build -t temperature-converter:v1 ."
+                bat "docker build -t plantcare:v1 ."
             }
         }
         stage("Docker Login") {
@@ -15,7 +15,7 @@ pipeline {
         stage("push Docker image to docker hub") {
             steps {
                 echo "push Docker image to docker hub"
-                bat "docker tag temperature-converter:v1 tejashwini1108/casestudy:latest"
+                bat "docker tag plantcare:v1 tejashwini1108/casestudy:latest"
                 bat "docker push tejashwini1108/casestudy:latest"
             }
         }
@@ -36,3 +36,4 @@ pipeline {
         }
     }
 }
+
