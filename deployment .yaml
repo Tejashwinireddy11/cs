@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kubeapp
-        image: tejashwini1108/strength:latest
+        image: tejashwini1108/casestudy:latest
 
         ports:
 
