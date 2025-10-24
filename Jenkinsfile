@@ -1,39 +1,45 @@
 pipeline {
     agent any
+
     stages {
         stage("Build Docker image") {
             steps {
-                echo "Build Docker image"
+                echo "Building Docker image"
                 bat "docker build -t plantcare:v1 ."
             }
         }
+
         stage("Docker Login") {
             steps {
+                echo "Logging into Docker Hub"
                 bat "docker login -u tejashwini1108 -p Tejashwini@1108"
             }
         }
-        stage("push Docker image to docker hub") {
+
+        stage("Push Docker image to Docker Hub") {
             steps {
-                echo "push Docker image to docker hub"
+                echo "Pushing Docker image to Docker Hub"
                 bat "docker tag plantcare:v1 tejashwini1108/casestudy:latest"
                 bat "docker push tejashwini1108/casestudy:latest"
             }
         }
-        stage("Deploy to kubernetes") {
+
+        stage("Deploy to Kubernetes") {
             steps {
-                echo "Deploy to kubernetes"
-                bat "kubectl apply -f deployment.yaml --validate=false"
-                bat "kubectl apply -f service.yaml"
+                echo "Deploying to Kubernetes cluster"
+                // 👇 your files are inside the 'cs' folder in the repo
+                bat "kubectl apply -f cs/deployment.yaml --validate=false"
+                bat "kubectl apply -f cs/service.yaml"
             }
         }
     }
+
     post {
         success {
-            echo "Pipeline executed successfully"
+            echo "✅ Pipeline executed successfully"
         }
         failure {
-            echo "pipeline failed. Please check the logs"
+            echo "❌ Pipeline failed. Please check the logs."
         }
     }
 }
-
