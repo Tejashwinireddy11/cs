@@ -6,8 +6,8 @@ spec:
   selector:
     app: plantcare
   ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
-      nodePort: 30081
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 30081
   type: NodePort
