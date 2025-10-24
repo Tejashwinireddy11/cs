@@ -28,8 +28,8 @@ pipeline {
             steps {
                 echo "Deploying to Kubernetes cluster"
                 // 👇 your files are inside the 'cs' folder in the repo
-                bat "kubectl apply -f cs/deployment.yaml --validate=false"
-                bat "kubectl apply -f cs/service.yaml"
+                bat "kubectl apply -f deployment.yaml --validate=false"
+                bat "kubectl apply -f service.yaml"
             }
         }
     }
@@ -43,3 +43,4 @@ pipeline {
         }
     }
 }
+
