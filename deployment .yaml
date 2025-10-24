@@ -13,7 +13,7 @@ spec:
         app: plantcare
     spec:
       containers:
-        - name: plantcare
-          image: tejashwini1108/casestudy:latest # use your Docker Hub image
-          ports:
-            - containerPort: 5000
+      - name: plantcare
+        image: tejashwini1108/casestudy:latest
+        ports:
+        - containerPort: 5000
